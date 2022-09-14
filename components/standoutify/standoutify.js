@@ -1,8 +1,6 @@
 /**
  * The StandOutify web component module.
  *
- * @author Alejandro Lindström Mamani <al225vh@student.lnu.se>
- * @version 1.0
  */
 
 // Define template.
@@ -47,6 +45,9 @@ customElements.define('standoutify',
 
       // Gets a reference to the StandOutify container element.
       this.standOutifyElementContainer = this.shadowRoot.getElementById('standoutify')
+
+      // Append the child element to the container.
+      this.standOutifyElementContainer.appendChild(childElement)
 
     }
 
