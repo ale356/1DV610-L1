@@ -6,14 +6,20 @@ import Highligth from './file'
 // Create the variables needed.
 const buttonElement = document.createElement('button')
 const animationStyle = 'focus'
+const newAnimationStyle = 'bigger'
 
-// Create the custom element by sending in an animation choice and element to assign it to.
-const highlightElement = new Highlight(animationStyle, buttonElement)
+// Create the class Highlight.
+const highlightClass = new Highlight()
+
+// This method sets the animation style on a element.
+Highlight.setAnimationStyle(buttonElement, animationStyle)
 
 // This method changes the animation on the element.
-highlightElement.changeAnimationStyle('bigger')
+Highligth.changeAnimationStyle(buttonElement, newAnimationStyle)
 
 // This method removes the animation.
-highlightElement.removeAnimation()
+Highlight.removeAnimation(buttonElement)
 
-// This method
+// This method changes the color of a animation.
+Highlight.changeColorOfAnimation(buttonElement, 'red')
+
