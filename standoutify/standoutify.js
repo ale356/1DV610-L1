@@ -28,12 +28,12 @@ customElements.define('standoutify',
     /**
      * Creates an instance of the current type.
      */
-    constructor (animation, childElement) {
+    constructor () {
       super()
 
-      // Save the animation and childElement as properties.
-      this.#animationStyle = animation
-      this.#childElement = childElement
+      // Save the animation style and childElement as properties.
+      this.#animationStyle = 'standard'
+      this.#childElement =
 
       // Attach a shadow DOM tree to this element and
       // append the template to the shadow root.
@@ -57,8 +57,37 @@ customElements.define('standoutify',
     connectedCallback () {
       // Eventlistener to the child element.
       this.childElement.addEventListener('onmouseover', (event) => {
-
+        console.log('Hover')
       })
     }
+
+    /**
+     * Getter method for the animation style.
+     */
+    getAnimationStyle() {
+      return this.#animationStyle
+    }
+
+    /**
+     * Setter method for the animation style.
+     */
+     setAnimationStyle(animationStyle) {
+      this.#animationStyle = animationStyle
+    }
+
+    /**
+     * Getter method for the child element.
+     */
+         getChildElement() {
+          return this.#childElement
+        }
+    
+    /**
+     * Setter method for the child element.
+     */
+      setChildElement(childElement) {
+      this.#childElement = childElement
+    }
+
   }
 )
