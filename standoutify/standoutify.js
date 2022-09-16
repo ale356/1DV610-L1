@@ -26,6 +26,20 @@ customElements.define('standoutify',
     #standOutify
 
     /**
+     * The string value for the animation.
+     *
+     * @type {string}
+     */
+    #animationStyle
+
+    /**
+     * The child element.
+     *
+     * @type {HTMLElement}
+     */
+    #childElement
+
+    /**
      * Creates an instance of the current type.
      */
     constructor () {
@@ -64,29 +78,48 @@ customElements.define('standoutify',
     /**
      * Getter method for the animation style.
      */
-    getAnimationStyle() {
+    #getAnimationStyle() {
       return this.#animationStyle
     }
 
     /**
      * Setter method for the animation style.
      */
-     setAnimationStyle(animationStyle) {
+     #setAnimationStyle(animationStyle) {
       this.#animationStyle = animationStyle
     }
 
     /**
      * Getter method for the child element.
      */
-         getChildElement() {
+        #getChildElement() {
           return this.#childElement
         }
     
     /**
      * Setter method for the child element.
      */
-      setChildElement(childElement) {
+      #setChildElement(childElement) {
       this.#childElement = childElement
+    }
+
+    /**
+     * Initializes the custom element with a style and child element.
+     */
+     initialize(animationstyle, childElement) {
+      
+      // Check if the input is valid.
+      if(typeof animationstyle === 'string' && typeof childElement === 'HTMLElement') {
+
+        // Set the animation style and assign the element as a child.
+        this.#animationStyle = animationstyle
+        this.#standOutify.appendChild(childElement)
+
+        console.log('Its valid input.' + this.#getAnimationStyle + this.#getChildElement)
+
+      } else {
+        console.log('Its invalid input.')
+      }
     }
 
   }
