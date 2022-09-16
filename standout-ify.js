@@ -13,7 +13,7 @@ template.innerHTML = `
 </div>
 `
 
-customElements.define('standoutify',
+customElements.define('standout-ify',
   /**
    * Represents a Highlightify element.
    */
@@ -109,7 +109,7 @@ customElements.define('standoutify',
      initialize(animationstyle, childElement) {
       
       // Check if the input is valid.
-      if(typeof animationstyle === 'string' && typeof childElement === 'HTMLElement') {
+      if(typeof animationstyle === 'string' && typeof childElement === 'object') {
 
         // Set the animation style and assign the element as a child.
         this.#animationStyle = animationstyle
