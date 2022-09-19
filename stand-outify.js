@@ -9,20 +9,20 @@ template.innerHTML = `
 <style>
 /*Style here.*/
 </style>
-<slot></slot>
+<slot id="slot-element"></slot>
 `
 
 customElements.define('stand-outify',
   /**
-   * Represents a Highlightify element.
+   * Represents a Standoutify element.
    */
   class extends HTMLElement {
     /**
-     * The Standoutify element.
+     * The slot element.
      *
      * @type {HTMLDivElement}
      */
-    #standOutify
+    #slotElement
 
     /**
      * The string value for the animation.
@@ -53,19 +53,39 @@ customElements.define('stand-outify',
         this.attachShadow({ mode: 'open' })
           .appendChild(template.content.cloneNode(true))
 
-      // Gets a reference to the StandOutify element.      
-      this.#standOutify = this.shadowRoot.querySelector('standoutify')
+      // Gets a reference to the slot element.      
+      this.#slotElement = this.shadowRoot.getElementById('slot-element')
 
+    }
+
+    /**
+ * Attributes to monitor for changes.
+ *
+ * @returns {string[]} A string array of attributes to monitor.
+ */
+    static get observedAttributes() {
+      return ['value']
     }
 
     /**
      * Called after the element is inserted into the DOM.
      */
     connectedCallback() {
-      // Eventlistener to the child element.
-      this.#childElement.addEventListener('onmouseover', (event) => {
-        console.log('Hover')
-      })
+
+    }
+
+    /**
+ * Called when observed attribute(s) changes.
+ *
+ * @param {string} name - The attribute's name.
+ * @param {*} oldValue - The old value.
+ * @param {*} newValue - The new value.
+ */
+    attributeChangedCallback(name, oldValue, newValue) {
+      if (name === 'value' && newValue !== oldValue) {
+        // Assigns the new value to the attribute value.
+        this.value.setAttribute('value', newValue)
+      }
     }
 
     /**
@@ -106,13 +126,20 @@ customElements.define('stand-outify',
 
         // Set the animation style and assign the element as a child.
         this.#animationStyle = animationstyle
-        this.#childElement = childElement
 
-        this.appendChild(childElement)
+        // Set an id for the element.
+        childElement.setAttribute('id', 'animation-element')
 
-        const aString = this.#getAnimationStyle
+        this.#slotElement.appendChild(childElement)
 
-        console.log('Its valid input.' + aString)
+        this.#childElement = this.shadowRoot.getElementById('animation-element')
+
+        // Eventlistener to the child element.
+        this.#childElement.addEventListener('mouseover', (event) => {
+          console.log('Hover!!!')
+        })
+
+        console.log('Its valid input.')
 
       } else {
         console.log('Its invalid input.')
