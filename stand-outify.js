@@ -178,10 +178,9 @@ customElements.define('stand-outify',
      */
     #animateChildElement() {
 
-      // Animate the element.
-
       // Add a eventlistener.
     this.#childElement.addEventListener('mouseover', (event) => {
+      this.#childElement.animate(this.#selectedAnimationSettings, this.#selectedTimingSettings)
       console.log('Hover!!!')
     })
     }
