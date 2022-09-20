@@ -39,37 +39,50 @@ customElements.define('stand-outify',
     #childElement
 
     /**
+     * The selected animation property.
+     *
+     * @type {object}
+     */
+    #selectedAnimationSettings
+
+    /**
+     * The selected timing property.
+     *
+     * @type {object}
+     */
+    #selectedTimingSettings
+
+    /**
+     * Object that holds the different animation settings.
+     *
+     * @type {object}
+     */
+    #animationObject = {
+      spinning: [{ transform: 'rotate(0) scale(1)' }, { transform: 'rotate(360deg) scale(0)' }]
+    }
+
+    /**
+     * Object that holds the timing settings for the animations.
+     *
+     * @type {object}
+     */
+    #timingObject = {
+      spinning: { duration: 2000, iterations: 1, }
+    }
+
+    /**
      * Creates an instance of the current type.
      */
     constructor() {
       super()
 
-      // Animation style and childElement properties.
-      this.#animationStyle = 'standard'
-      this.#childElement =
-
-      // The selected animation and timing settings.
-      this.#animation = 
-      this.#timing = 
-
-        // Attach a shadow DOM tree to this element and
-        // append the template to the shadow root.
-        this.attachShadow({ mode: 'open' })
-          .appendChild(template.content.cloneNode(true))
+      // Attach a shadow DOM tree to this element and
+      // append the template to the shadow root.
+      this.attachShadow({ mode: 'open' })
+        .appendChild(template.content.cloneNode(true))
 
       // Reference to the slot element.      
       this.#slotElement = this.shadowRoot.getElementById('slot-element')
-
-      // Create an animation object.
-      this.#animationObject = {
-        spinning : [ { transform: 'rotate(0) scale(1)' }, { transform: 'rotate(360deg) scale(0)' } ]
-      }
-
-      // Create an timing object.
-      this.#timingObject = {
-        spinning : { duration: 2000, iterations: 1, }
-      }
-
     }
 
     /**
@@ -163,9 +176,9 @@ customElements.define('stand-outify',
     /**
      * Animates the childElement with Web Animations API.
      */
-      animateChildElement() {
+    animateChildElement() {
 
-      }
+    }
 
   }
 )
