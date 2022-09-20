@@ -86,13 +86,13 @@ customElements.define('stand-outify',
     }
 
     /**
- * Attributes to monitor for changes.
- *
- * @returns {string[]} A string array of attributes to monitor.
- */
-    static get observedAttributes() {
-      return ['value']
-    }
+     * Attributes to monitor for changes.
+     *
+     * @returns {string[]} A string array of attributes to monitor.
+     */
+      static get observedAttributes() {
+        return ['value']
+      }
 
     /**
      * Called after the element is inserted into the DOM.
@@ -151,22 +151,22 @@ customElements.define('stand-outify',
       // Check if the input is valid.
       if (typeof animationstyle === 'string' && typeof childElement === 'object') {
 
-        // Set the animation style and assign the element as a child.
+        // Setup the element.
         this.#animationStyle = animationstyle
 
-        // Set an id for the element.
         childElement.setAttribute('id', 'animation-element')
 
         this.#slotElement.appendChild(childElement)
 
         this.#childElement = this.shadowRoot.getElementById('animation-element')
 
-        // Eventlistener to the child element.
-        this.#childElement.addEventListener('mouseover', (event) => {
-          console.log('Hover!!!')
-        })
-
         console.log('Its valid input.')
+
+        // Set the correct animation settings.
+        this.#setChosenAnimationSettings()
+
+        // Animate the element.
+        this.#animateChildElement()
 
       } else {
         console.log('Its invalid input.')
@@ -176,9 +176,36 @@ customElements.define('stand-outify',
     /**
      * Animates the childElement with Web Animations API.
      */
-    animateChildElement() {
+    #animateChildElement() {
 
+      // Animate the element.
+
+      // Add a eventlistener.
+    this.#childElement.addEventListener('mouseover', (event) => {
+      console.log('Hover!!!')
+    })
     }
+
+    /**
+     * Sets the animation settings to use.
+     */
+     #setChosenAnimationSettings() {
+
+      // Set the animation.
+      for (const key in this.#animationObject) {
+        if (key === this.#animationStyle) {
+          this.#selectedAnimationSettings = this.#animationObject[key]
+        }
+      }
+
+      // Set the timing.
+      for (const key in this.#timingObject) {
+        if (key === this.#animationStyle) {
+          this.#selectedTimingSettings = this.#timingObject[key]
+        }
+      }
+
+     }
 
   }
 )
