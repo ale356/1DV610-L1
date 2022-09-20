@@ -44,17 +44,31 @@ customElements.define('stand-outify',
     constructor() {
       super()
 
-      // Save the animation style and childElement as properties.
+      // Animation style and childElement properties.
       this.#animationStyle = 'standard'
       this.#childElement =
+
+      // The selected animation and timing settings.
+      this.#animation = 
+      this.#timing = 
 
         // Attach a shadow DOM tree to this element and
         // append the template to the shadow root.
         this.attachShadow({ mode: 'open' })
           .appendChild(template.content.cloneNode(true))
 
-      // Gets a reference to the slot element.      
+      // Reference to the slot element.      
       this.#slotElement = this.shadowRoot.getElementById('slot-element')
+
+      // Create an animation object.
+      this.#animationObject = {
+        spinning : [ { transform: 'rotate(0) scale(1)' }, { transform: 'rotate(360deg) scale(0)' } ]
+      }
+
+      // Create an timing object.
+      this.#timingObject = {
+        spinning : { duration: 2000, iterations: 1, }
+      }
 
     }
 
@@ -145,6 +159,13 @@ customElements.define('stand-outify',
         console.log('Its invalid input.')
       }
     }
+
+    /**
+     * Animates the childElement with Web Animations API.
+     */
+      animateChildElement() {
+
+      }
 
   }
 )
