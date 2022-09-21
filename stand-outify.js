@@ -58,7 +58,11 @@ customElements.define('stand-outify',
      * @type {object}
      */
     #animationObject = {
-      spinning: [{ transform: 'rotate(0) scale(1)' }, { transform: 'rotate(360deg) scale(0)' }]
+      highlight: [
+        { transform: 'scale(1)', background: 'gray', opacity: '0.7' },
+        { transform: 'scale(1.3)', background: 'gray', opacity: '0.7' },
+        { transform: 'scale(1)' }
+      ]
     }
 
     /**
@@ -67,7 +71,7 @@ customElements.define('stand-outify',
      * @type {object}
      */
     #timingObject = {
-      spinning: { duration: 2000, iterations: 1, }
+      highlight: { duration: 2000, iterations: 1 }
     }
 
     /**
@@ -90,9 +94,9 @@ customElements.define('stand-outify',
      *
      * @returns {string[]} A string array of attributes to monitor.
      */
-      static get observedAttributes() {
-        return ['value']
-      }
+    static get observedAttributes() {
+      return ['value']
+    }
 
     /**
      * Called after the element is inserted into the DOM.
@@ -177,18 +181,20 @@ customElements.define('stand-outify',
      * Animates the childElement with Web Animations API.
      */
     #animateChildElement() {
+      console.log(this.#selectedAnimationSettings)
+      console.log(this.#selectedTimingSettings)
 
       // Add a eventlistener.
-    this.#childElement.addEventListener('mouseover', (event) => {
-      this.#childElement.animate(this.#selectedAnimationSettings, this.#selectedTimingSettings)
-      console.log('Hover!!!')
-    })
+      this.#childElement.addEventListener('mouseover', (event) => {
+        this.#childElement.animate(this.#selectedAnimationSettings, this.#selectedTimingSettings)
+        console.log('Hover!!!')
+      })
     }
 
     /**
      * Sets the animation settings to use.
      */
-     #setChosenAnimationSettings() {
+    #setChosenAnimationSettings() {
 
       // Set the animation.
       for (const key in this.#animationObject) {
@@ -204,7 +210,7 @@ customElements.define('stand-outify',
         }
       }
 
-     }
+    }
 
   }
 )
