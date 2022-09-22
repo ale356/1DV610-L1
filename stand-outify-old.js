@@ -52,8 +52,6 @@ customElements.define('stand-outify',
      */
     #selectedTimingSettings
 
-    #controller
-
     /**
      * Object that holds the different animation settings.
      *
@@ -101,11 +99,8 @@ customElements.define('stand-outify',
       this.attachShadow({ mode: 'open' })
         .appendChild(template.content.cloneNode(true))
 
-      // Reference to the slot element.
+      // Reference to the slot element.      
       this.#slotElement = this.shadowRoot.getElementById('slot-element')
-
-      // Create a controller object.
-      this.#controller = new AbortController()
     }
 
     /**
@@ -188,8 +183,8 @@ customElements.define('stand-outify',
         // Set the correct animation settings.
         this.#setChosenAnimationSettings()
 
-        // Animate the element.
-        this.#animateChildElement()
+        // Animate and listen to the element.
+        this.#addEventListenerToChild()
 
       } else {
         console.log('Its invalid input.')
@@ -197,23 +192,23 @@ customElements.define('stand-outify',
     }
 
     /**
-     * Animates the childElement with Web Animations API and adds a event listener.
+     * Animates the childElement with Web Animations API.
      */
     #animateChildElement() {
 
-      // Add a eventlistener with a signal.
-      this.#childElement.addEventListener('mouseover', (event) => {
         this.#childElement.animate(this.#selectedAnimationSettings, this.#selectedTimingSettings)
-      }, { signal: this.#controller.signal })
     }
 
     /**
-     * Removes the animation on the child element.
+     * Adds event listener to child element.
      */
-      removeChildElementAnimation() {
-      // Remove a eventlistener.
-      this.#controller.abort()
+      #addEventListenerToChild() {
+
+      // Add a eventlistener.
+      this.#childElement.addEventListener('mouseover', this.#animateChildElement)
+
       }
+    
 
     /**
      * Sets the animation settings to use.
