@@ -58,17 +58,22 @@ customElements.define('stand-outify',
      * @type {object}
      */
     #animationObject = {
-      highlight: [
-        { transform: 'scale(1)', background: 'gray', opacity: '0.7' },
-        { transform: 'scale(1.3)', background: 'gray', opacity: '0.7' },
+      magnify: [
+        { transform: 'scale(1)', background: 'gray', opacity: 0.7 },
+        { transform: 'scale(1.3)', background: 'gray', opacity: 0.7 },
         { transform: 'scale(1)' }
       ],
       shake: [
-        { transform: 'rotate(0deg)', offset: 0},
+        { transform: 'rotate(0deg)', offset: 0 },
         { transform: 'rotate(5deg)', offset: 0.25 },
         { transform: 'rotate(0eg)', offset: 0.50 },
         { transform: 'rotate(-5deg)', offset: 0.75 },
         { transform: 'rotate(0deg)', offset: 1 }
+      ],
+      highlight: [
+        { transform: 'scale(1)', background: 'orange', opacity: 1 },
+        { transform: 'scale(1)', background: 'orange', opacity: 1 },
+        { transform: 'scale(1)' }
       ]
     }
 
@@ -78,8 +83,9 @@ customElements.define('stand-outify',
      * @type {object}
      */
     #timingObject = {
-      highlight: { duration: 2000, iterations: 1, easing: 'ease-in-out', delay: '10' },
-      shake: { duration: 300, iterations: Infinity }
+      magnify: { duration: 2000, iterations: 1, easing: 'ease-in-out', delay: '10' },
+      shake: { duration: 300, iterations: Infinity },
+      highlight: { duration: 2000, iterations: 1, easing: 'ease-in-out' }
     }
 
     /**
