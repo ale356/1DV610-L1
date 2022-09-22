@@ -59,14 +59,14 @@ customElements.define('stand-outify',
      */
     #animationObject = {
       magnify: [
-        { transform: 'scale(1)', background: 'gray', opacity: 0.7 },
-        { transform: 'scale(1.3)', background: 'gray', opacity: 0.7 },
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.3)' },
         { transform: 'scale(1)' }
       ],
       shake: [
         { transform: 'rotate(0deg)', offset: 0 },
         { transform: 'rotate(5deg)', offset: 0.25 },
-        { transform: 'rotate(0eg)', offset: 0.50 },
+        { transform: 'rotate(0deg)', offset: 0.50 },
         { transform: 'rotate(-5deg)', offset: 0.75 },
         { transform: 'rotate(0deg)', offset: 1 }
       ],
@@ -84,7 +84,7 @@ customElements.define('stand-outify',
      */
     #timingObject = {
       magnify: { duration: 2000, iterations: 1, easing: 'ease-in-out', delay: '10' },
-      shake: { duration: 300, iterations: Infinity },
+      shake: { duration: 300, iterations: 5 },
       highlight: { duration: 2000, iterations: 1, easing: 'ease-in-out' }
     }
 
@@ -164,7 +164,7 @@ customElements.define('stand-outify',
     /**
      * Initializes the custom element with a style and child element.
      */
-    initialize(animationstyle, childElement) {
+    initializeElement(animationstyle, childElement) {
 
       // Check if the input is valid.
       if (typeof animationstyle === 'string' && typeof childElement === 'object') {
@@ -195,13 +195,10 @@ customElements.define('stand-outify',
      * Animates the childElement with Web Animations API.
      */
     #animateChildElement() {
-      console.log(this.#selectedAnimationSettings)
-      console.log(this.#selectedTimingSettings)
 
       // Add a eventlistener.
       this.#childElement.addEventListener('mouseover', (event) => {
         this.#childElement.animate(this.#selectedAnimationSettings, this.#selectedTimingSettings)
-        console.log('Hover!!!')
       })
     }
 
@@ -226,5 +223,16 @@ customElements.define('stand-outify',
 
     }
 
+    /**
+     * Change the animation of the element.
+     */
+    changeAnimationStyle(animationStyle) {
+
+      // Update the property.
+      this.#setAnimationStyle(animationStyle)
+
+      // Update the animation settings.
+      this.#setChosenAnimationSettings()
   }
+}
 )
