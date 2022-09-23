@@ -52,7 +52,20 @@ customElements.define('stand-outify',
      */
     #selectedTimingSettings
 
+    /**
+     * The abort controller.
+     *
+     * @type {object}
+     */
     #controller
+
+
+    /**
+     * The event to listen for.
+     *
+     * @type {object}
+     */
+    #eventType
 
     /**
      * Object that holds the different animation settings.
@@ -169,13 +182,16 @@ customElements.define('stand-outify',
     /**
      * Initializes the custom element with a style and child element.
      */
-    initializeElement(animationstyle, childElement) {
+    initializeElement(animationstyle, childElement, eventType) {
 
       // Check if the input is valid.
-      if (typeof animationstyle === 'string' && typeof childElement === 'object') {
+      if (typeof animationstyle === 'string' && typeof eventType === 'string' 
+      && typeof childElement === 'object') {
 
         // Setup the element.
         this.#animationStyle = animationstyle
+
+        this.#eventType = eventType
 
         childElement.setAttribute('id', 'animation-element')
 
@@ -202,7 +218,7 @@ customElements.define('stand-outify',
     #animateChildElement() {
 
       // Add a eventlistener with a signal.
-      this.#childElement.addEventListener('mouseover', (event) => {
+      this.#childElement.addEventListener(this.#eventType, (event) => {
         this.#childElement.animate(this.#selectedAnimationSettings, this.#selectedTimingSettings)
       }, { signal: this.#controller.signal })
     }
