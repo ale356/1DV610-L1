@@ -172,6 +172,20 @@ customElements.define('stand-outify',
       return this.#eventType
     }
 
+     /**
+     * Getter method for the selected animation settings.
+     */
+         get #getSelectedAnimationSettings() {
+          return this.#selectedAnimationSettings
+        }
+
+    /**
+     * Getter method for the selected timing settings.
+     */
+    get #getSelectedTimingSettings() {
+      return this.#selectedTimingSettings
+    }
+
     /**
      * Setter method for the event listener type.
      */
@@ -219,7 +233,7 @@ customElements.define('stand-outify',
         this.#setChosenAnimationSettings()
 
         // Animate the element and add a event listener.
-        this.#addEventListenerToChildElement()
+        this.#addEventListenerToElement()
 
       } else {
         console.log('Its invalid input.')
@@ -275,18 +289,18 @@ customElements.define('stand-outify',
     changeEventListenerType(eventType) {
 
       // Remove the event listener.
-      this.abortEventListenerChildElement()
+      this.#removeEventListenerOnElement()
 
       // Update the property.
       this.#setEventType(eventType)
 
       // Add new event listener.
-     this.#addEventListenerToChildElement()
+      this.#addEventListenerToElement()
     }
 
-/**
- * Aborts the event listener on the child element.
- */
+    /**
+     * Aborts the event listener on the child element.
+     */
     abortEventListenerChildElement() {
       // Remove a eventlistener.
       this.#controller.abort()
@@ -303,8 +317,8 @@ customElements.define('stand-outify',
      * Adds event listener to element.
      */
     #addEventListenerToElement() {
-    // Add a eventlistener.
-    this.#childElement.addEventListener(this.#getEventType, (event) => this.#animateChildElement())
+      // Add a eventlistener.
+      this.#childElement.addEventListener(this.#getEventType, this.#animateChildElement)
     }
 
     /**
@@ -312,7 +326,7 @@ customElements.define('stand-outify',
      */
     #removeEventListenerOnElement() {
       // Remove a eventlistener.
-      this.#childElement.removeEventListener(this.#getEventType, (event) => this.#animateChildElement())
+      this.#childElement.removeEventListener(this.#getEventType, this.#animateChildElement)
     }
   }
 )
