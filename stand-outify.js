@@ -166,6 +166,20 @@ customElements.define('stand-outify',
     }
 
     /**
+     * Getter method for the event type.
+     */
+    get #getEventType() {
+      return this.#eventType
+    }
+
+    /**
+     * Setter method for the event listener type.
+     */
+    #setEventType(eventType) {
+      this.#eventType = eventType
+    }
+
+    /**
      * Getter method for the child element.
      */
     #getChildElement() {
@@ -185,8 +199,8 @@ customElements.define('stand-outify',
     initializeElement(animationstyle, childElement, eventType) {
 
       // Check if the input is valid.
-      if (typeof animationstyle === 'string' && typeof eventType === 'string' 
-      && typeof childElement === 'object') {
+      if (typeof animationstyle === 'string' && typeof eventType === 'string'
+        && typeof childElement === 'object') {
 
         // Setup the element.
         this.#animationStyle = animationstyle
@@ -204,8 +218,8 @@ customElements.define('stand-outify',
         // Set the correct animation settings.
         this.#setChosenAnimationSettings()
 
-        // Animate the element.
-        this.#animateChildElement()
+        // Animate the element and add a event listener.
+        this.#addEventListenerToChildElement()
 
       } else {
         console.log('Its invalid input.')
@@ -213,23 +227,14 @@ customElements.define('stand-outify',
     }
 
     /**
-     * Animates the childElement with Web Animations API and adds a event listener.
+     * Adds a event listener to the child element.
      */
-    #animateChildElement() {
-
+    #addEventListenerToChildElement() {
       // Add a eventlistener with a signal.
-      this.#childElement.addEventListener(this.#eventType, (event) => {
-        this.#childElement.animate(this.#selectedAnimationSettings, this.#selectedTimingSettings)
+      this.#childElement.addEventListener(this.#getEventType, (event) => {
+        this.#animateChildElement()
       }, { signal: this.#controller.signal })
     }
-
-    /**
-     * Removes the animation on the child element.
-     */
-      removeChildElementAnimation() {
-      // Remove a eventlistener.
-      this.#controller.abort()
-      }
 
     /**
      * Sets the animation settings to use.
@@ -262,6 +267,52 @@ customElements.define('stand-outify',
 
       // Update the animation settings.
       this.#setChosenAnimationSettings()
+    }
+
+    /**
+     * Change the event listener type.
+     */
+    changeEventListenerType(eventType) {
+
+      // Remove the event listener.
+      this.abortEventListenerChildElement()
+
+      // Update the property.
+      this.#setEventType(eventType)
+
+      // Add new event listener.
+     this.#addEventListenerToChildElement()
+    }
+
+/**
+ * Aborts the event listener on the child element.
+ */
+    abortEventListenerChildElement() {
+      // Remove a eventlistener.
+      this.#controller.abort()
+    }
+
+    /**
+     * Animates the child element.
+     */
+    #animateChildElement() {
+      this.#childElement.animate(this.#selectedAnimationSettings, this.#selectedTimingSettings)
+    }
+
+    /**
+     * Adds event listener to element.
+     */
+    #addEventListenerToElement() {
+    // Add a eventlistener.
+    this.#childElement.addEventListener(this.#getEventType, (event) => this.#animateChildElement())
+    }
+
+    /**
+     * Removes event listener on element.
+     */
+    #removeEventListenerOnElement() {
+      // Remove a eventlistener.
+      this.#childElement.removeEventListener(this.#getEventType, (event) => this.#animateChildElement())
+    }
   }
-}
 )
