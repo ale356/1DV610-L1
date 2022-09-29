@@ -36,7 +36,7 @@ customElements.define('stand-outify',
      *
      * @type {HTMLElement}
      */
-    #childElement
+    childElement
 
     /**
      * The selected animation property.
@@ -172,20 +172,6 @@ customElements.define('stand-outify',
       return this.#eventType
     }
 
-     /**
-     * Getter method for the selected animation settings.
-     */
-         get #getSelectedAnimationSettings() {
-          return this.#selectedAnimationSettings
-        }
-
-    /**
-     * Getter method for the selected timing settings.
-     */
-    get #getSelectedTimingSettings() {
-      return this.#selectedTimingSettings
-    }
-
     /**
      * Setter method for the event listener type.
      */
@@ -197,14 +183,14 @@ customElements.define('stand-outify',
      * Getter method for the child element.
      */
     #getChildElement() {
-      return this.#childElement
+      return this.childElement
     }
 
     /**
      * Setter method for the child element.
      */
     #setChildElement(childElement) {
-      this.#childElement = childElement
+      this.childElement = childElement
     }
 
     /**
@@ -225,7 +211,7 @@ customElements.define('stand-outify',
 
         this.#slotElement.appendChild(childElement)
 
-        this.#childElement = this.shadowRoot.getElementById('animation-element')
+        this.childElement = this.shadowRoot.getElementById('animation-element')
 
         console.log('Its valid input.')
 
@@ -233,7 +219,7 @@ customElements.define('stand-outify',
         this.#setChosenAnimationSettings()
 
         // Animate the element and add a event listener.
-        this.#addEventListenerToElement()
+        this.#addEventListenerToChildElement()
 
       } else {
         console.log('Its invalid input.')
@@ -245,7 +231,7 @@ customElements.define('stand-outify',
      */
     #addEventListenerToChildElement() {
       // Add a eventlistener with a signal.
-      this.#childElement.addEventListener(this.#getEventType, (event) => {
+      this.childElement.addEventListener(this.#getEventType, (event) => {
         this.#animateChildElement()
       }, { signal: this.#controller.signal })
     }
@@ -289,13 +275,13 @@ customElements.define('stand-outify',
     changeEventListenerType(eventType) {
 
       // Remove the event listener.
-      this.#removeEventListenerOnElement()
+      this.abortEventListenerChildElement()
 
       // Update the property.
       this.#setEventType(eventType)
 
       // Add new event listener.
-      this.#addEventListenerToElement()
+      this.#addEventListenerToChildElement()
     }
 
     /**
@@ -310,7 +296,7 @@ customElements.define('stand-outify',
      * Animates the child element.
      */
     #animateChildElement() {
-      this.#childElement.animate(this.#selectedAnimationSettings, this.#selectedTimingSettings)
+      this.childElement.animate(this.#selectedAnimationSettings, this.#selectedTimingSettings)
     }
 
     /**
@@ -318,7 +304,7 @@ customElements.define('stand-outify',
      */
     #addEventListenerToElement() {
       // Add a eventlistener.
-      this.#childElement.addEventListener(this.#getEventType, this.#animateChildElement)
+      this.childElement.addEventListener(this.#getEventType, this.#animateChildElement)
     }
 
     /**
@@ -326,7 +312,7 @@ customElements.define('stand-outify',
      */
     #removeEventListenerOnElement() {
       // Remove a eventlistener.
-      this.#childElement.removeEventListener(this.#getEventType, this.#animateChildElement)
+      this.childElement.removeEventListener(this.#getEventType, this.#animateChildElement)
     }
   }
 )
