@@ -86,8 +86,8 @@ customElements.define('stand-outify',
         { transform: 'rotate(0deg)', offset: 1 }
       ],
       highlight: [
-        { transform: 'scale(1)', background: 'orange', opacity: 1 },
-        { transform: 'scale(1)', background: 'orange', opacity: 1 },
+        { transform: 'scale(1)', color: 'orange', opacity: 1 },
+        { transform: 'scale(1)', color: 'orange', opacity: 1 },
         { transform: 'scale(1)' }
       ]
     }
@@ -154,7 +154,7 @@ customElements.define('stand-outify',
     /**
      * Getter method for the animation style.
      */
-    #getAnimationStyle() {
+    get getAnimationStyle() {
       return this.#animationStyle
     }
 
@@ -313,6 +313,23 @@ customElements.define('stand-outify',
     #removeEventListenerOnElement() {
       // Remove a eventlistener.
       this.childElement.removeEventListener(this.#getEventType, this.#animateChildElement)
+    }
+
+    /**
+     * Changes the color of the animation.
+     */
+    changeColorOfAnimation(colorString) {
+
+      // Iterate through each transform object.
+      const currentAnimation = this.getAnimationStyle
+      const currentAnimationArray = this.#animationObject[currentAnimation]
+      console.log(currentAnimationArray)
+
+      currentAnimationArray.forEach(element => {
+        if (element.color !== undefined) {
+          element.color = colorString
+        }
+      });
     }
   }
 )
