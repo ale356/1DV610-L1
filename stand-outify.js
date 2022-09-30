@@ -122,36 +122,6 @@ customElements.define('stand-outify',
     }
 
     /**
-     * Attributes to monitor for changes.
-     *
-     * @returns {string[]} A string array of attributes to monitor.
-     */
-    static get observedAttributes() {
-      return ['value']
-    }
-
-    /**
-     * Called after the element is inserted into the DOM.
-     */
-    connectedCallback() {
-
-    }
-
-    /**
- * Called when observed attribute(s) changes.
- *
- * @param {string} name - The attribute's name.
- * @param {*} oldValue - The old value.
- * @param {*} newValue - The new value.
- */
-    attributeChangedCallback(name, oldValue, newValue) {
-      if (name === 'value' && newValue !== oldValue) {
-        // Assigns the new value to the attribute value.
-        this.value.setAttribute('value', newValue)
-      }
-    }
-
-    /**
      * Getter method for the animation style.
      */
     get getAnimationStyle() {
@@ -222,7 +192,7 @@ customElements.define('stand-outify',
         this.#addEventListenerToChildElement()
 
       } else {
-        console.log('Its invalid input.')
+        console.log('Invalid input.')
       }
     }
 
@@ -262,11 +232,14 @@ customElements.define('stand-outify',
      */
     changeAnimationStyle(animationStyle) {
 
-      // Update the property.
-      this.#setAnimationStyle(animationStyle)
+      if (typeof animationStyle === 'string') {
+        // Update the property.
+        this.#setAnimationStyle(animationStyle)
 
-      // Update the animation settings.
-      this.#setChosenAnimationSettings()
+        // Update the animation settings.
+        this.#setChosenAnimationSettings()
+      }
+
     }
 
     /**
@@ -320,16 +293,18 @@ customElements.define('stand-outify',
      */
     changeColorOfAnimation(colorString) {
 
-      // Iterate through each transform object.
-      const currentAnimation = this.getAnimationStyle
-      const currentAnimationArray = this.#animationObject[currentAnimation]
-      console.log(currentAnimationArray)
+      if (typeof colorString === 'string') {
+        // Iterate through each transform object.
+        const currentAnimation = this.getAnimationStyle
+        const currentAnimationArray = this.#animationObject[currentAnimation]
+        console.log(currentAnimationArray)
 
-      currentAnimationArray.forEach(element => {
-        if (element.color !== undefined) {
-          element.color = colorString
-        }
-      });
+        currentAnimationArray.forEach(element => {
+          if (element.color !== undefined) {
+            element.color = colorString
+          }
+        });
+      }
     }
 
     /**
@@ -337,13 +312,15 @@ customElements.define('stand-outify',
      */
     changeDurationOfAnimation(milliseconds) {
 
-      // Get the timing object.
-      const currentAnimation = this.getAnimationStyle
-      const currentTimingObject = this.#timingObject[currentAnimation]
+      if (typeof milliseconds === 'number') {
+        // Get the timing object.
+        const currentAnimation = this.getAnimationStyle
+        const currentTimingObject = this.#timingObject[currentAnimation]
 
-      // Change the value of the timing object.
-      if(typeof milliseconds === 'number') {
-        currentTimingObject['duration'] = milliseconds
+        // Change the value of the timing object.
+        if (typeof milliseconds === 'number') {
+          currentTimingObject['duration'] = milliseconds
+        }
       }
     }
   }
