@@ -331,5 +331,20 @@ customElements.define('stand-outify',
         }
       });
     }
+
+    /**
+     * Changes the duration of the animation.
+     */
+    changeDurationOfAnimation(milliseconds) {
+
+      // Get the timing object.
+      const currentAnimation = this.getAnimationStyle
+      const currentTimingObject = this.#timingObject[currentAnimation]
+
+      // Change the value of the timing object.
+      if(typeof milliseconds === 'number') {
+        currentTimingObject['duration'] = milliseconds
+      }
+    }
   }
 )
