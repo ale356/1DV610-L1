@@ -297,13 +297,18 @@ customElements.define('stand-outify',
         // Iterate through each transform object.
         const currentAnimation = this.getAnimationStyle
         const currentAnimationArray = this.#animationObject[currentAnimation]
-        console.log(currentAnimationArray)
+        const animationUsesColor = false
 
         currentAnimationArray.forEach(element => {
           if (element.color !== undefined) {
             element.color = colorString
+            animationUsesColor = true
           }
         });
+
+        if(!animationUsesColor) {
+          console.log('This animation does not have any color.')
+        }
       }
     }
 
