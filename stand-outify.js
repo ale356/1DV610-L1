@@ -183,8 +183,6 @@ customElements.define('stand-outify',
 
         this.childElement = this.shadowRoot.getElementById('animation-element')
 
-        console.log('Its valid input.')
-
         // Set the correct animation settings.
         this.#setChosenAnimationSettings()
 
@@ -238,6 +236,8 @@ customElements.define('stand-outify',
 
         // Update the animation settings.
         this.#setChosenAnimationSettings()
+      } else {
+        console.log('Invalid input.')
       }
 
     }
@@ -263,6 +263,10 @@ customElements.define('stand-outify',
     abortEventListenerChildElement() {
       // Remove a eventlistener.
       this.#controller.abort()
+
+      if(this.#getChildElement == undefined) {
+        console.log('No element has been initialized.')
+      }
     }
 
     /**
@@ -326,6 +330,8 @@ customElements.define('stand-outify',
         if (typeof milliseconds === 'number') {
           currentTimingObject['duration'] = milliseconds
         }
+      } else {
+        console.log('Invalid data type.')
       }
     }
   }
