@@ -157,13 +157,6 @@ customElements.define('stand-outify',
     }
 
     /**
-     * Setter method for the child element.
-     */
-    #setChildElement(childElement) {
-      this.childElement = childElement
-    }
-
-    /**
      * Initializes the custom element with a style and child element.
      */
     initializeElement(animationstyle, childElement, eventType) {
@@ -274,22 +267,6 @@ customElements.define('stand-outify',
      */
     #animateChildElement() {
       this.childElement.animate(this.#selectedAnimationSettings, this.#selectedTimingSettings)
-    }
-
-    /**
-     * Adds event listener to element.
-     */
-    #addEventListenerToElement() {
-      // Add a eventlistener.
-      this.childElement.addEventListener(this.#getEventType, this.#animateChildElement)
-    }
-
-    /**
-     * Removes event listener on element.
-     */
-    #removeEventListenerOnElement() {
-      // Remove a eventlistener.
-      this.childElement.removeEventListener(this.#getEventType, this.#animateChildElement)
     }
 
     /**
