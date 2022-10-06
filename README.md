@@ -77,6 +77,11 @@ This method removes the event listener on the element and in turn removes the an
 standoutifyElement.abortEventListenerChildElement()
 ```
 ## Test Report
+| Use-Cases     | Manual Test-Cases | Test Results |
+| ------------- | ------------- | -------- |
+| [UC1](https://github.com/ale356/1DV610-L1/blob/main/resources/Use-Cases.md#uc1-initialize-element)           | [TC1.1](https://github.com/ale356/1DV610-L1/blob/main/resources/Test-Cases.md#tc11-initialize-element-successfully)         | OK       |
+| [UC1](https://github.com/ale356/1DV610-L1/blob/main/resources/Use-Cases.md#uc1-initialize-element)           | [TC1.2](https://github.com/ale356/1DV610-L1/blob/main/resources/Test-Cases.md#tc12-initialize-element-unsuccessfully)         | OK       |
+| [UC2](https://github.com/ale356/1DV610-L1/blob/main/resources/Use-Cases.md#uc2-change-animation-style)           | [TC2.1](https://github.com/ale356/1DV610-L1/blob/main/resources/Test-Cases.md#tc21-change-element-style-successfully)         | OK       |
 
 ## Contributing
 You are welcome to contribute to this prwoject. Have a look at the Web [Animation API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) to learn more. If you want to add more animation styles feel free to do so check out [this link](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect). 
