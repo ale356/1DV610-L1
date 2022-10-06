@@ -91,7 +91,7 @@ standoutifyElement.abortEventListenerChildElement()
 | [UC5](https://github.com/ale356/1DV610-L1/blob/main/resources/Use-Cases.md#uc5-change-duration-of-animation)           | [TC5.2](https://github.com/ale356/1DV610-L1/blob/main/resources/Test-Cases.md#tc52-change-duration-of-animation-unsuccessfully)         | OK |
 
 ## Contributing
-You are welcome to contribute to this prwoject. Have a look at the Web [Animation API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) to learn more. If you want to add more animation styles feel free to do so check out [this link](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect). 
+You are welcome to contribute to this project. Have a look at the Web [Animation API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) to learn more. If you want to add more animation styles feel free to do so check out [this link](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect). 
 ## License
    Copyright 2022 ale356
 
