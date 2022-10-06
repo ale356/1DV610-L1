@@ -2,6 +2,7 @@
 
 ## UC1 Initialize element
 Precondition: none
+
 Postcondition: an element is animated
 
 ### Main scenario
@@ -17,6 +18,7 @@ Postcondition: an element is animated
 
 ## UC2 Change animation style
 Precondition: none
+
 Postcondition: an element animation style is changed
 
 ### Main scenario
@@ -30,6 +32,7 @@ Postcondition: an element animation style is changed
 
 ## UC3 Remove animation
 Precondition: animated element
+
 Postcondition: non animated element
 
 ### Main scenario
@@ -43,6 +46,7 @@ Postcondition: non animated element
 
 ## UC4 Change animation color
 Precondition: none
+
 Postcondition: updated animation color
 
 ### Main scenario
@@ -57,6 +61,7 @@ Postcondition: updated animation color
 
 ## UC5 Change duration of animation
 Precondition: none
+
 Postcondition: updated animation duration
 
 ### Main scenario

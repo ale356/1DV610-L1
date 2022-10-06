@@ -2,6 +2,7 @@
 
 ## TC1.1 Initialize element successfully
 Use case: UC1 Initialize element
+
 Scenario: Initialise element successfully
 
 The main scenario of UC1 is tested where a user initialises an element successfully.
@@ -18,6 +19,7 @@ Precondition: Instantiated custom element stand-outify.
 
 ## TC1.2 Initialize element unsuccessfully
 Use case: UC1 Initialize element
+
 Scenario: Initialise element unsuccessfully
 
 The second scenario of UC1 is tested where a user initialises an element unsuccessfully.
@@ -33,6 +35,7 @@ Precondition: Instantiated custom element stand-outify..
 
 ## TC2.1 Change element style successfully
 Use case: UC2 Change element style
+
 Scenario: Change element style successfully
 
 The main scenario of UC2 is tested where a user changes an elements style successfully.
@@ -49,6 +52,7 @@ Precondition: An initialised element with the animation style ‘magnify’ and 
 
 ## TC2.2 Change elements style unsuccessfully
 Use case: UC2 Change element style
+
 Scenario: Change element style unsuccessfully
 
 The second scenario of UC2 is tested where a user changes an elements style unsuccessfully.
@@ -64,6 +68,7 @@ Precondition: An initialised element and instantiated custom element stand-outif
 
 ## TC3.1 Remove animation successfully
 Use case: UC3 Remove animation
+
 Scenario: Remove animation successfully
 
 The main scenario of UC3 is tested where a user removes an elements animation successfully.
@@ -79,6 +84,7 @@ Precondition: An initialised element and instantiated custom element stand-outif
 
 ## TC3.2 Remove animation unsuccessfully
 Use case: UC3 Remove animation
+
 Scenario: Remove animation unsuccessfully
 
 The second scenario of UC3 is tested when a user tries to remove an animation of an element that hasn’t been initialised.
@@ -93,6 +99,7 @@ Precondition: Instantiated custom element stand-outify.
 
 ## TC4.1 Change animation color successfully
 Use case: UC4 Change animation color
+
 Scenario: Change animation color successfully
 
 The main scenario of UC4 is tested when a user changes an elements animation color successfully.
@@ -108,6 +115,7 @@ Precondition: An initialised element with the animation style highlight and an i
 
 ## TC4.2 Change animation color unsuccessfully
 Use case: UC4 Change animation color
+
 Scenario: Change animation color unsuccessfully
 
 The second scenario of UC4 is tested when a user changes an elements animation color which don’t have any color in their animation.
@@ -123,6 +131,7 @@ Precondition: An initialised element with the animation style magnify and a inst
 
 ## TC5.1 Change duration of animation successfully
 Use case: UC5 Change duration of animation
+
 Scenario: Change duration of animation successfully
 
 The main scenario of UC5 is tested when a user changes the duration of an animation successfully.
@@ -138,6 +147,7 @@ Precondition: An initialised element with the animation style highlight and an i
 
 ## TC5.2 Change duration of animation unsuccessfully
 Use case: UC5 Change duration of animation
+
 Scenario: Change duration of animation unsuccessfully
 
 The second scenario of UC5 is tested when a user changes the duration of an animation unsuccessfully.
