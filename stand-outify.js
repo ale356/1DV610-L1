@@ -152,7 +152,7 @@ customElements.define('stand-outify',
     /**
      * Getter method for the child element.
      */
-    #getChildElement() {
+    get #getChildElement() {
       return this.childElement
     }
 
@@ -264,7 +264,7 @@ customElements.define('stand-outify',
       // Remove a eventlistener.
       this.#controller.abort()
 
-      if(this.#getChildElement == undefined) {
+      if(this.#getChildElement === undefined) {
         console.log('No element has been initialized.')
       }
     }
@@ -301,7 +301,7 @@ customElements.define('stand-outify',
         // Iterate through each transform object.
         const currentAnimation = this.getAnimationStyle
         const currentAnimationArray = this.#animationObject[currentAnimation]
-        const animationUsesColor = false
+        let animationUsesColor = false
 
         currentAnimationArray.forEach(element => {
           if (element.color !== undefined) {
