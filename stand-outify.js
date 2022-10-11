@@ -157,7 +157,7 @@ customElements.define('stand-outify',
     }
 
     /**
-     * Initializes the custom element with a style and child element.
+     * Initializes the custom element with a style, event type and a child element.
      */
     initializeElement(animationstyle, childElement, eventType) {
 
@@ -304,9 +304,7 @@ customElements.define('stand-outify',
         const currentTimingObject = this.#timingObject[currentAnimation]
 
         // Change the value of the timing object.
-        if (typeof milliseconds === 'number') {
           currentTimingObject['duration'] = milliseconds
-        }
       } else {
         console.log('Invalid data type.')
       }
